@@ -4,23 +4,21 @@ public class Spogliatoio {
     private int num = 2;
 
         public synchronized int entraSpogliatoio (Pilota p){
-            String name = Thread.currentThread().getName();
             try {
                 while(num==0)
                 {
-                    System.out.println("Spogliatoio pieno " + name + " aspetta");
+                    System.out.println("Spogliatoio pieno " + p.getNam() + " aspetta");
                    wait();
                 }
-                System.out.println(name + " entra nello spogliatoio");
+                System.out.println(p.getNam() + " entra nello spogliatoio");
                 num--;
                 
             }catch  (InterruptedException e) { }
             return num;
         }
-        public synchronized void esciSpogliatoio() {
-            String name = Thread.currentThread().getName();
+        public synchronized void esciSpogliatoio(Pilota p) {
             num++;
-            System.out.println(name + " esce dallo spogliatoio");
+            System.out.println(p.getNam() + " esce dallo spogliatoio");
             notifyAll();
         }
 }

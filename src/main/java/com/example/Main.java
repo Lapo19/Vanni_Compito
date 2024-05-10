@@ -5,8 +5,10 @@ public class Main {
         Spogliatoio spogliatoio = new Spogliatoio();
         Pista pista = new Pista();
 
-        for(int i=1;i<8;i++){
-            Pilota t = new Pilota(i, spogliatoio, pista);
+        String[] nomi = {"Giulia", "Martina", "Pietro","Lorenzo","Marco","Francesco","Flavio","Viola"};
+
+        for(int i=0;i<nomi.length;i++){
+            Pilota t = new Pilota(nomi[i], spogliatoio, pista);
             t.start();
         }
     }
